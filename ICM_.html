@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+	<title>INDICE DE MASA CORPORAL</title>
+	<link rel="stylesheet" type="text/css" href="ICM.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" >
+	function calcularIMC()
+	{
+		var peso, altura, imc, leyenda;
+		peso=document.getElementById("peso").value;
+		altura=document.getElementById("altura").value/100;
+		imc=peso/(altura*altura);
+		document.getElementById("imc").value=imc.toFixed(2);
+		if(imc<=20.5){
+			leyenda="Actualmente su peso es menor al normal, se aconseja subir: " + (altura*altura*20.5-peso).toFixed(1) + " kilos";
+			}
+			else if(imc>=25.5) {
+				leyenda="Actuamente su peso es mayor al normal, se aconseja adelgazar: " + (peso-altura*altura*25.5).toFixed(1) + " kilos";
+			}
+				else {
+					leyenda="Actuamente se encuentra con el peso ideal: ";
+				}
+				document.getElementById("leyenda").value=leyenda;
+			}
+	</script>
+</head>
+<body>
+	<br><br><br><br><br><br><br><br>
+	<img src="basculaanimada.jpg">
+	<form name="f1" id="f1" action=""> 
+		<fieldset>
+			<legend>CALCULADORA DEL INDICE DE MASA CORPORAL</legend>
+			<p>Peso en kilogramos:
+				<input type="text" name="peso" id="peso" size="3" maxlength="4">
+			</p>
+			<p>Altura en centimetros:
+			<input type="text" name="altura" id="altura" size="3" maxlength="3">
+			<br><br>
+			<input type="button" value="Calcular IMC" onClick="calcularIMC()" id="boton">
+			</p>
+			<p>IMC:
+			<input type="text" name="imc" id="imc" size="10" maxlength="15"><br><br><br>
+			MENSAJE:
+			<input type="text" name="leyenda" id="leyenda" size="42">
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>
